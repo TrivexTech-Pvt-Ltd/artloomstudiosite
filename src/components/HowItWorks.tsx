@@ -48,7 +48,7 @@ export default function HowItWorks() {
                 ))}
             </div>
 
-            <div className="mt-20 pt-10 border-t border-white/10 flex flex-col items-center gap-6 text-center animate-fade-in-up">
+            <div id="contact" className="mt-20 pt-10 border-t border-white/10 flex flex-col items-center gap-6 text-center animate-fade-in-up">
                 <h3 className="text-2xl font-semibold text-white">Ready to start?</h3>
                 <div className="flex flex-col sm:flex-row gap-6 justify-center items-center bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-sm hover:border-purple-500/50 transition-colors">
                     <a href="tel:+94710702062" className="flex items-center gap-3 text-lg hover:text-purple-400 transition-colors group">

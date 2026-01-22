@@ -1,31 +1,16 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
-const slides = [
-  {
-    id: 1,
-    image: "/img-1.jpg",
-    alt: "3D Printing Nozzle",
-  },
-  {
-    id: 2,
-    image: "/img-2.jpg",
-    alt: "Industrial Fabrication",
-  },
-  {
-    id: 3,
-    image: "/img-3.jpg",
-    alt: "Abstract 3D Forms",
-  },
-];
+import Image from "next/image";
+import Link from "next/link";
+import { heroSlidesData } from "@/lib/data/heroData";
 
 export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
+      setCurrentSlide((prev) => (prev + 1) % heroSlidesData.length);
     }, 5000);
     return () => clearInterval(timer);
   }, []);
@@ -33,16 +18,18 @@ export default function Hero() {
   return (
     <section className="relative w-full h-[600px] md:h-[800px] flex flex-col items-center justify-center text-center overflow-hidden">
       {/* Background Slider */}
-      {slides.map((slide, index) => (
+      {heroSlidesData.map((slide, index) => (
         <div
           key={slide.id}
           className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? "opacity-100" : "opacity-0"
             }`}
         >
-          <img
+          <Image
             src={slide.image}
             alt={slide.alt}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority={index === 0}
           />
           {/* Overlay Gradient for readability */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-[#050012]" />
@@ -68,19 +55,19 @@ export default function Hero() {
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center w-full">
-          <button className="px-8 py-4 bg-purple-600 rounded-full text-white font-semibold hover:bg-purple-500 hover:shadow-[0_0_20px_rgba(147,51,234,0.6)] transition-all transform hover:-translate-y-1">
+          <Link href="#contact" className="px-8 py-4 bg-purple-600 rounded-full text-white font-semibold hover:bg-purple-500 hover:shadow-[0_0_20px_rgba(147,51,234,0.6)] transition-all transform hover:-translate-y-1">
             🟣 Get Started
-          </button>
-          <button className="px-8 py-4 border border-white/30 bg-white/10 rounded-full text-white font-semibold hover:bg-white/20 transition-all backdrop-blur-md">
+          </Link>
+          <Link href="#services" className="px-8 py-4 border border-white/30 bg-white/10 rounded-full text-white font-semibold hover:bg-white/20 transition-all backdrop-blur-md">
             ⚪ Upload Your Design
-          </button>
+          </Link>
         </div>
 
       </div>
 
       {/* Slider Indicators */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-3 z-30">
-        {slides.map((_, index) => (
+        {heroSlidesData.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}

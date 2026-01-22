@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Logo } from "@/lib/utils/staticimages";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +15,7 @@ export default function Navbar() {
       <Link href="/" className="flex items-center gap-3 group z-50">
         <div className="relative w-10 h-10 overflow-hidden rounded-full border border-purple-500/50 group-hover:border-purple-400 transition">
           <Image
-            src="/logo.jpg"
+            src={Logo}
             alt="Artloom Studio Logo"
             fill
             className="object-cover"
@@ -42,9 +43,9 @@ export default function Navbar() {
       </ul>
 
       <div className="flex items-center gap-4">
-        <button className="hidden md:block px-6 py-2.5 rounded-full bg-purple-600 text-white text-sm font-semibold shadow-[0_0_15px_rgba(147,51,234,0.5)] hover:shadow-[0_0_25px_rgba(147,51,234,0.7)] hover:bg-purple-500 transition-all transform hover:-translate-y-0.5">
+        <Link href="#contact" className="hidden md:block px-6 py-2.5 rounded-full bg-purple-600 text-white text-sm font-semibold shadow-[0_0_15px_rgba(147,51,234,0.5)] hover:shadow-[0_0_25px_rgba(147,51,234,0.7)] hover:bg-purple-500 transition-all transform hover:-translate-y-0.5">
           Get a Quote
-        </button>
+        </Link>
 
         {/* Mobile Menu Toggle */}
         <button
@@ -72,7 +73,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
           <div className="flex items-center gap-3">
             <div className="relative w-10 h-10 overflow-hidden rounded-full border border-purple-500/50">
-              <Image src="/logo.jpg" alt="Logo" fill className="object-cover" />
+              <Image src={Logo} alt="Logo" fill className="object-cover" />
             </div>
             <span className="text-xl font-bold text-white tracking-wide">Artloom Studio</span>
           </div>
@@ -98,12 +99,13 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          <button
+          <Link
+            href="#contact"
             className="mt-12 px-10 py-4 rounded-full bg-purple-600 text-white font-semibold text-lg shadow-[0_0_20px_rgba(147,51,234,0.4)] active:scale-95 transition-transform"
             onClick={() => setIsMenuOpen(false)}
           >
             Get a Quote
-          </button>
+          </Link>
         </div>
       </div>
     </nav>

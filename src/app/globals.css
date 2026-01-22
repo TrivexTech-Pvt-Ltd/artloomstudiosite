@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 /* Global theme */
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   height: 100%;

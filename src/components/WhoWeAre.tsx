@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { MainImg2 } from "@/lib/utils/staticimages";
 
 export default function WhoWeAre() {
     const points = [
@@ -32,7 +33,7 @@ export default function WhoWeAre() {
             </div>
             <div className="flex-1 relative h-64 w-full md:h-96 rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-purple-900/20">
                 <Image
-                    src="/img-2.jpg"
+                    src={MainImg2}
                     alt="Who We Are - Artloom Studio"
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-700"
